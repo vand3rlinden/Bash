@@ -33,3 +33,5 @@ fi
 domain="$1"
 get_spf_record "$domain"
 get_dmarc_record "$domain"
+
+#You can run it by providing a domain name as an argument, like: `bash get_spfdmarc.sh example.com`
