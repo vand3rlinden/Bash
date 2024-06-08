@@ -22,7 +22,7 @@ get_dmarc_record() {
     fi
 }
 
-# Function to retrieve DKIM record for a domain
+# Function to retrieve DKIM record for a domain (selectors for Microsoft 365)
 get_dkim_record() {
     domain="$1"
     selectors=("selector1" "selector2")
