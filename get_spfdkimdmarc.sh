@@ -31,10 +31,10 @@ get_dkim_record() {
     for selector in "${selectors[@]}"; do
         dkim_record=$(dig "$selector._domainkey.$domain" TXT +short)
         if [ -n "$dkim_record" ]; then
-            echo -e "\033[32mDKIM record for $selector.$domain:\033[0m"
+            echo -e "\033[32mDKIM record for $selector._domainkey.$domain:\033[0m"
             echo "$dkim_record"
         else
-            echo -e "\033[32mNo DKIM record found for $selector.$domain\033[0m"
+            echo -e "\033[32mNo DKIM record found for $selector._domainkey.$domain\033[0m"
         fi
     done
 }
