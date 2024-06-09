@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Function to retrieve SPF record for a domain
 get_spf_record() {
     domain="$1"
