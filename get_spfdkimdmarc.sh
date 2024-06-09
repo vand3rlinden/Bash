@@ -3,10 +3,10 @@ get_spf_record() {
     domain="$1"
     spf_record=$(dig "$domain" TXT +short | grep -E 'v=spf1')
     if [ -n "$spf_record" ]; then
-        echo "SPF record for $domain:"
-        echo "$spf_record"
+        echo -e "\033[32mSPF record for $domain:\033[0m"
+        echo -e "$spf_record"
     else
-        echo "No SPF record found for $domain"
+        echo -e "\033[32mNo SPF record found for $domain\033[0m"
     fi
 }
 
@@ -15,10 +15,10 @@ get_dmarc_record() {
     domain="$1"
     dmarc_record=$(dig "_dmarc.$domain" TXT +short)
     if [ -n "$dmarc_record" ]; then
-        echo "DMARC record for $domain:"
-        echo "$dmarc_record"
+        echo -e "\033[32mDMARC record for $domain:\033[0m"
+        echo -e "$dmarc_record"
     else
-        echo "No DMARC record found for $domain"
+        echo -e "\033[32mNo DMARC record found for $domain\033[0m"
     fi
 }
 
@@ -29,10 +29,10 @@ get_dkim_record() {
     for selector in "${selectors[@]}"; do
         dkim_record=$(dig "$selector._domainkey.$domain" TXT +short)
         if [ -n "$dkim_record" ]; then
-            echo "DKIM record for $selector.$domain:"
-            echo "$dkim_record"
+            echo -e "\033[32mDKIM record for $selector.$domain:\033[0m"
+            echo -e "$dkim_record"
         else
-            echo "No DKIM record found for $selector.$domain"
+            echo -e "\033[32mNo DKIM record found for $selector.$domain\033[0m"
         fi
     done
 }
