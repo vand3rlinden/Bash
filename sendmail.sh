@@ -4,7 +4,7 @@
 sender="P2 Sender <p2sender@domain.com>"
 recipient="ricardo@example.com"
 
-# Set return path sender
+# Set return path sender (P1 sender)
 return_path_sender="p1sender@domain.com"
 
 # Set subject and message body
