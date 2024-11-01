@@ -24,31 +24,35 @@ get_dmarc_record() {
     fi
 }
 
-# Function to retrieve DKIM record for a domain (selectors for Microsoft 365)
+# Function to retrieve DKIM record for a domain
 get_dkim_record() {
     domain="$1"
-    selectors=("selector1" "selector2")
-    for selector in "${selectors[@]}"; do
-        dkim_record=$(dig "$selector._domainkey.$domain" TXT +short)
-        if [ -n "$dkim_record" ]; then
-            echo -e "\033[32mDKIM record for $selector._domainkey.$domain:\033[0m"
-            echo "$dkim_record"
-        else
-            echo -e "\033[32mNo DKIM record found for $selector._domainkey.$domain\033[0m"
-        fi
-    done
+    selector="$2"
+    dkim_record=$(dig "$selector._domainkey.$domain" TXT +short)
+    if [ -n "$dkim_record" ]; then
+        echo -e "\033[32mDKIM record for $selector._domainkey.$domain:\033[0m"
+        echo "$dkim_record"
+    else
+        echo -e "\033[32mNo DKIM record found for $selector._domainkey.$domain\033[0m"
+    fi
 }
 
 # Main script
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <domain>"
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <domain> [selector]"
     exit 1
 fi
 
 domain="$1"
+
+# Prompt user for a DKIM selector if not provided
+if [ -z "$2" ]; then
+    echo "Please enter the DKIM selector (e.g., selector1, selector2):"
+    read -r selector
+else
+    selector="$2"
+fi
+
 get_spf_record "$domain"
 get_dmarc_record "$domain"
-get_dkim_record "$domain"
-
-#You can run it by providing a domainname as an argument, like: `bash get_spfdkimdmarc.sh example.com`
-#Prerequisite: BIND'S `dig` commandline tool - Debian based installation: `apt-get install dnsutils` - MacOs homebrew installation: `brew install bind`
+get_dkim_record "$domain" "$selector"
