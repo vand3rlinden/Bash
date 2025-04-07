@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Set sender (P2 sender) and recipient email addresses
-sender="Firstname Lastname <p2sender@domain.com>"
+sender="Firstname Lastname <p2sender@domain.com>" # P2 Sender
 recipient="ricardo@example.com"
 
 # Set return path sender (P1 sender)
-return_path_sender="p1sender@domain.com"
+return_path_sender="p1sender@domain.com" # P1 Sender
 
 # Set subject and message body
 subject="EHLO World"
