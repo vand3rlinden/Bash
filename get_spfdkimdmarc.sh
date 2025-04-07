@@ -13,7 +13,6 @@ get_spf_record() {
 }
 
 # Function to retrieve DMARC record for a domain
-# Function to retrieve DMARC record for a domain
 get_dmarc_record() {
     domain="$1"
     dmarc_record=$(dig "_dmarc.$domain" TXT +short)
