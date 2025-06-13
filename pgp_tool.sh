@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Simple PGP Tool using GnuPG
+# PGP Tool using GnuPG
 
 function encrypt_message() {
     echo "Enter recipient's email or key ID:"
