@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Simple GPG Tool using GnuPG
+# Simple PGP Tool using GnuPG
 
 function encrypt_message() {
     echo "Enter recipient's email or key ID:"
@@ -28,7 +28,7 @@ function verify_message() {
 
 function show_menu() {
     echo "=============================="
-    echo "     GPG TOOL MENU"
+    echo "     PGP TOOL MENU"
     echo "=============================="
     echo "1) Encrypt Message"
     echo "2) Decrypt Message"
