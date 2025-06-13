@@ -57,6 +57,15 @@ function remove_private_key() {
     gpg --delete-secret-key "$keyid"
 }
 
+function edit_key_trust() {
+    echo "Enter the email or key ID to edit trust level:"
+    read keyid
+    echo "Opening interactive GPG trust editor..."
+    echo "Inside GPG, use the 'trust' command to change trust level."
+    echo "When finished, type 'quit' to exit."
+    gpg --edit-key "$keyid"
+}
+
 function show_menu() {
     echo "=============================="
     echo "  PGP KEY MANAGER TOOL MENU"
@@ -69,8 +78,9 @@ function show_menu() {
     echo "6) Export Private Key"
     echo "7) Remove Public Key"
     echo "8) Remove Private Key"
-    echo "9) Exit"
-    echo -n "Choose an option [1-9]: "
+    echo "9) Edit Key Trust"
+    echo "10) Exit"
+    echo -n "Choose an option [1-10]: "
 }
 
 while true; do
@@ -85,7 +95,8 @@ while true; do
         6) export_private_key ;;
         7) remove_public_key ;;
         8) remove_private_key ;;
-        9) echo "Exiting."; break ;;
+        9) edit_key_trust ;;
+        10) echo "Exiting."; break ;;
         *) echo "Invalid choice." ;;
     esac
     echo ""
