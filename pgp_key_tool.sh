@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# GPG Key Management Tool using GnuPG
+# PGP Key Management Tool using GnuPG
 
 function create_key_pair() {
     echo "Creating a new GPG key pair..."
