@@ -1,6 +1,3 @@
-# Installation
-1. Clone this repository with `git clone` command
-
 # Installation per bash script
 1. Make a bashscript directory in your user directory `cd ~`: `mkdir bashscripts`
 2. Open the directory: `cd bashscripts`
