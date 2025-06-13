@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Simple GPG Tool using GnuPG
+
+function encrypt_message() {
+    echo "Enter recipient's email or key ID:"
+    read recipient
+    echo "Enter the message to encrypt (end with Ctrl+D):"
+    gpg --armor --encrypt --recipient "$recipient"
+}
+
+function decrypt_message() {
+    echo "Paste the encrypted message below (end with Ctrl+D):"
+    gpg --decrypt
+}
+
+function sign_message() {
+    echo "Enter your key ID or email (for signing):"
+    read signer
+    echo "Enter the message to sign (end with Ctrl+D):"
+    gpg --armor --clearsign --local-user "$signer"
+}
+
+function verify_message() {
+    echo "Paste the signed message below (end with Ctrl+D):"
+    gpg --verify
+}
+
+function show_menu() {
+    echo "=============================="
+    echo "     GPG TOOL MENU"
+    echo "=============================="
+    echo "1) Encrypt Message"
+    echo "2) Decrypt Message"
+    echo "3) Sign Message"
+    echo "4) Verify Signed Message"
+    echo "5) Exit"
+    echo -n "Choose an option [1-5]: "
+}
+
+while true; do
+    show_menu
+    read choice
+    case $choice in
+        1) encrypt_message ;;
+        2) decrypt_message ;;
+        3) sign_message ;;
+        4) verify_message ;;
+        5) echo "Exiting."; break ;;
+        *) echo "Invalid choice." ;;
+    esac
+    echo ""
+done
