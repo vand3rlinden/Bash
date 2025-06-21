@@ -67,5 +67,5 @@ get_spf_record "$domain"
 get_dkim_record "$domain" "$selector"
 get_dmarc_record "$domain"
 
-#You can run it by providing a domainname and selector as an argument, like: `bash get_spfdmarc.sh example.com key1`
+#You can run it by providing a domainname and selector as an argument, like: `bash get_spfdkimdmarc.sh example.com key1`
 #Prerequisite: BIND'S `dig` commandline tool - Debian based installation: `apt-get install dnsutils` - MacOs homebrew installation: `brew install bind`
