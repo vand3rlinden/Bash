@@ -11,3 +11,5 @@
 # Run Bash Scripts in the Zsh Shell
 Bash and Zsh are compatible with each other, which means you can use your Bash scripts in your Zsh shell.
 To confirm your Shell run: `which $SHELL`
+
+I chose Bash for this scripts instead of Zsh because I want it to be portable across many systems, including both Linux and macOS. While the default shell on macOS is Zsh and on many Linux distributions it’s Bash, Bash scripts tend to be more compatible with Zsh than the other way around.
