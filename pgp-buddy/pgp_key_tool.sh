@@ -57,6 +57,26 @@ function remove_private_key() {
     gpg --delete-secret-key "$keyid"
 }
 
+function sign_public_key() {
+    echo "Enter the Key ID to sign:"
+    read keyid
+    echo "Choose signing method:"
+    echo "1) Local signature (non-exportable) [gpg --lsign-key]"
+    echo "2) Exportable signature [gpg --sign-key]"
+    read choice
+    case $choice in
+        1)
+            gpg --lsign-key "$keyid"
+            ;;
+        2)
+            gpg --sign-key "$keyid"
+            ;;
+        *)
+            echo "Invalid choice."
+            ;;
+    esac
+}
+
 function edit_key_trust() {
     echo "Enter the email or key ID to edit trust level:"
     read keyid
@@ -78,8 +98,9 @@ function show_menu() {
     echo "6) Export Private Key"
     echo "7) Remove Public Key"
     echo "8) Remove Private Key"
-    echo "9) Edit Key Trust"
-    echo "10) Exit"
+    echo "9) Sign Public Key"
+    echo "10) Edit Key Trust"
+    echo "11) Exit"
     echo -n "Choose an option [1-10]: "
 }
 
@@ -95,8 +116,9 @@ while true; do
         6) export_private_key ;;
         7) remove_public_key ;;
         8) remove_private_key ;;
-        9) edit_key_trust ;;
-        10) echo "Exiting."; break ;;
+        9) sign_public_key ;;
+        10) edit_key_trust ;;
+        11) echo "Exiting."; break ;;
         *) echo "Invalid choice." ;;
     esac
     echo ""
