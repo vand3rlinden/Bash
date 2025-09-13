@@ -26,6 +26,12 @@ function verify_message() {
     gpg --verify
 }
 
+function locate_publickey() {
+    echo "Enter an email address to locate:"
+    read email
+    gpg --locate-keys "$email"
+}
+
 function show_menu() {
     echo "=============================="
     echo "     PGP TOOL MENU"
@@ -34,8 +40,9 @@ function show_menu() {
     echo "2) Decrypt Message"
     echo "3) Sign Message"
     echo "4) Verify Signed Message"
-    echo "5) Exit"
-    echo -n "Choose an option [1-5]: "
+    echo "5) Locate Public Key (WKD)"
+    echo "6) Exit"
+    echo -n "Choose an option [1-6]: "
 }
 
 while true; do
@@ -46,7 +53,8 @@ while true; do
         2) decrypt_message ;;
         3) sign_message ;;
         4) verify_message ;;
-        5) echo "Exiting."; break ;;
+        5) locate_publickey ;;
+        6) echo "Exiting."; break ;;
         *) echo "Invalid choice." ;;
     esac
     echo ""
