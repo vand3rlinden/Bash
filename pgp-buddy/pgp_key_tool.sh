@@ -101,7 +101,7 @@ function show_menu() {
     echo "9) Sign Public Key"
     echo "10) Edit Key Trust"
     echo "11) Exit"
-    echo -n "Choose an option [1-10]: "
+    echo -n "Choose an option [1-11]: "
 }
 
 while true; do
