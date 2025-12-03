@@ -25,22 +25,6 @@ get_dkim_record() {
     fi
 }
 
-# Main script
-if [ $# -lt 1 ]; then
-    echo "Usage: $0 <domain> [selector]"
-    exit 1
-fi
-
-domain="$1"
-
-# Prompt user for a DKIM selector if not provided
-if [ -z "$2" ]; then
-    echo "Please enter the DKIM selector (e.g., selector1, selector2):"
-    read -r selector
-else
-    selector="$2"
-fi
-
 # Function to retrieve DMARC record for a domain
 get_dmarc_record() {
     domain="$1"
@@ -62,6 +46,21 @@ get_dmarc_record() {
         echo -e "\033[31mDomain is not DMARC compliant — the domain is not protected against abuse.\033[0m"
     fi
 }
+
+# Main script
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <domain> [selector]"
+    exit 1
+fi
+    domain="$1"
+
+# Prompt user for a DKIM selector if not provided
+if [ -z "$2" ]; then
+    echo "Please enter the DKIM selector (e.g., selector1, selector2):"
+    read -r selector
+else
+    selector="$2"
+fi
 
 get_spf_record "$domain"
 get_dkim_record "$domain" "$selector"

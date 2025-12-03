@@ -39,8 +39,8 @@ if [ $# -ne 1 ]; then
     echo "Usage: $0 <domain>"
     exit 1
 fi
+    domain="$1"
 
-domain="$1"
 get_spf_record "$domain"
 get_dmarc_record "$domain"
 
