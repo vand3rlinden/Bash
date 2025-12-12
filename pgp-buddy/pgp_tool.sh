@@ -14,6 +14,22 @@ function decrypt_message() {
     gpg --decrypt
 }
 
+function encrypt_attachment() {
+    echo "Enter recipient's email or key ID:"
+    read recipient
+    echo "Enter the attachment to encrypt:"
+    read attachment
+    gpg --encrypt --recipient "$recipient" "$attachment"
+}
+
+function decrypt_attachment() {
+    echo "Enter the disired decrypted filename:"
+    read filename
+    echo "Enter the encrypted filename:"
+    read encryptedfilename
+    gpg --decrypt -o "$filename" "$encryptedfilename"
+}
+
 function sign_message() {
     echo "Enter your key ID or email (for signing):"
     read signer
@@ -38,10 +54,12 @@ function show_menu() {
     echo "=============================="
     echo "1) Encrypt Message"
     echo "2) Decrypt Message"
-    echo "3) Sign Message"
-    echo "4) Verify Signed Message"
-    echo "5) Locate Public Key (WKD)"
-    echo "6) Exit"
+    echo "3) Encrypt Attachment"
+    echo "4) Decrypt Attachment"
+    echo "5) Sign Message"
+    echo "6) Verify Signed Message"
+    echo "7) Locate Public Key (WKD)"
+    echo "8) Exit"
     echo -n "Choose an option [1-6]: "
 }
 
@@ -51,10 +69,12 @@ while true; do
     case $choice in
         1) encrypt_message ;;
         2) decrypt_message ;;
-        3) sign_message ;;
-        4) verify_message ;;
-        5) locate_publickey ;;
-        6) echo "Exiting."; break ;;
+        3) encrypt_attachment ;;
+        4) decrypt_attachment ;;
+        5) sign_message ;;
+        6) verify_message ;;
+        7) locate_publickey ;;
+        8) echo "Exiting."; break ;;
         *) echo "Invalid choice." ;;
     esac
     echo ""
