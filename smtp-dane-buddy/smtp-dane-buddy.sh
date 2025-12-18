@@ -6,7 +6,7 @@ get_smtp_dane_tlsa_record() {
     mx_record=$(dig "$domain" MX +short | awk '{print $2}' | sed 's/\.$//')
     smtp_dane_tlsa_record=$(dig "_25._tcp.$mx_record" TLSA +short)
     if [ -n "$smtp_dane_tlsa_record" ]; then
-        echo -e "\033[32mSMTP DANE's TLSA records for $domain's MX record: $mx_record\033[0m"
+        echo -e "\033[32mSMTP DANE TLSA records for $domain's MX record: $mx_record\033[0m"
         echo "$smtp_dane_tlsa_record"
     else
         echo -e "\033[32mNo SMTP DANE's TLSA records found for $domain\033[0m"
