@@ -112,7 +112,7 @@ get_tlsrpt_record() {
 show_menu() {
     clear
     echo "=============================="
-    echo "         MAIL BUDDY"
+    echo "         EMAIL BUDDY"
     echo "=============================="
     echo "1) Get SPF and DMARC"
     echo "2) Get DKIM"
