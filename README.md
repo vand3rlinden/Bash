@@ -1,12 +1,16 @@
 # Installation per bash script
-1. Make a bashscript directory in your user directory `cd ~`: `mkdir bashscripts`
-2. Open the directory: `cd bashscripts`
-3. Make a file such as `get_spfdmarc.sh`: `nano get_spfdmarc.sh`
+1. Make a Bash directory in your user directory `cd ~`: `mkdir bash`
+2. Open the directory: `cd bash`
+3. Make a file such as `email-buddy.sh`: `nano email-buddy.sh`
 4. Copy the bash script in the editor and save the file
 
+> **NOTE:** There are multiple ways to install the scripts, such as downloading them directly or using `git clone` to clone the repository.
+
 # Execute the bash scripts
-1. Make `get_spfdmarc.sh` executable: `chmod +x get_spfdmarc.sh`
-2. Now, you can execute the script to send the email: `./get_spfdmarc.sh example.com` or run `bash get_spfdmarc.sh example.com`
+1. Make `email-buddy.sh` executable: `chmod +x email-buddy.sh`
+2. Now, you can execute the script: `./email-buddy.sh example.com` 
+ 
+> **NOTE:** You can also simply run `bash email-buddy.sh`. In that case, you do not need to make the `.sh` file executable
 
 # Run Bash Scripts in the Zsh Shell
 Bash and Zsh are compatible with each other, which means you can use your Bash scripts in your Zsh shell.
