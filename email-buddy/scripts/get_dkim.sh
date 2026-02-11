@@ -28,6 +28,3 @@ else
 fi
 
 get_dkim_record "$domain" "$selector"
-
-#You can run it by providing a domainname and selector as an argument, like: `bash get_dkim.sh example.com key1`
-#Prerequisite: BIND'S `dig` commandline tool - Debian based installation: `apt-get install dnsutils` - MacOs homebrew installation: `brew install bind`
